@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/urius/ts-Asynch-A-Star-Pathfinding/issues"
   },
-  "homepage": "https://github.com/urius/ts-Asynch-A-Star-Pathfinding#readme"
+  "homepage": "https://github.com/urius/ts-Asynch-A-Star-Pathfinding#readme",
+  "devDependencies": {
+    "ts-loader": "^3.1.1"
+  }
 }
