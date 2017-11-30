@@ -26,9 +26,9 @@ let simpleField:AAStarSimpleField = new AAStarSimpleField([
 
         let astar:AAStar = new AAStar(simpleField);
         astar.calculatePath(simpleField.getNodeAt(0,0), simpleField.getNodeAt(3,0))
-        .forEach ((v:SimpleNode, i) => {
-            console.log(i + "=" + v.x + "," + v.y);
-        });
+            .forEach ((v:SimpleNode, i) => {
+                console.log(i + "=" + v.x + "," + v.y);
+            });
 ```
 
 #### Asynchronous method usage
