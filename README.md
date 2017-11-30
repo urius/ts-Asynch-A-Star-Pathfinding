@@ -19,9 +19,9 @@ To use this library, you must implement 2 Interfaces:
 ```
 let simpleField:AAStarSimpleField = new AAStarSimpleField([
             [1, -1, -1, 1],
-            [1, -1, 0, 1],
-            [1, 2, -1, 1],
-            [1, 1, 1, 1],
+            [1, -1,  0, 1],
+            [1,  2, -1, 1],
+            [1,  1,  1, 1],
         ], false)
 
         let astar:AAStar = new AAStar(simpleField);
