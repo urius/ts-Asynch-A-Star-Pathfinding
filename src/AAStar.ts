@@ -1,19 +1,37 @@
+/**
+ * every gamefield cell must have move cost value
+ */
 export interface IAAStarFieldNode {
     getMoveCost():number
 }
+/**
+ * Game field interface
+ */
 export interface IAAStarField {
     getNearNodes(node:IAAStarFieldNode):Array<IAAStarFieldNode>,    
     heuristicDistance(a:IAAStarFieldNode, b:IAAStarFieldNode):number
 }
-
+/**
+ * Options for synchronous algorithm mode
+ * cacheResults - if true, results will be saved for future use
+ * useWideSearch - if true, heuristic will be disabled, result will contain the shortest path, 
+ * but calculation time will be increased
+ */
 export interface IAlgorhitmOptions {
     cacheResults?:boolean,
     useWideSearch?:boolean,
 }
+/**
+ * Extended options for asynchronous algorithm mode
+ * iterationsPerFrame - how many calculation steps will be maked during the frame (recommended values: 10 - 100)
+ */
 export interface IAsyncAlgorhitmOptions extends IAlgorhitmOptions {
     iterationsPerFrame?:number
 }
 
+/**
+ * Main class
+ */
 export class AAStar {
     private _gameField:IAAStarField;
     private _cacheMap:Map<IAAStarFieldNode, CalculationData> = new Map();
@@ -28,6 +46,12 @@ export class AAStar {
                                                     };
     }
 
+    /**
+     * Synchronous path calculation, returns Array of IAAStarFieldNodes
+     * @param from start point
+     * @param to end point
+     * @param options algorithm settings (cacheResults:boolean, useWideSearch:boolean)
+     */
     public calculatePath(from:IAAStarFieldNode, to:IAAStarFieldNode, options:IAlgorhitmOptions = null):IAAStarFieldNode[] {
         let calculationOptions:IAlgorhitmOptions = options || this._defaultOptions;
         let cachedPatch:IAAStarFieldNode[] = this.getFromCache(from, to, calculationOptions);
@@ -46,6 +70,12 @@ export class AAStar {
         }
     }
 
+    /**
+     * Asynchronous path calculation, returns promise whith Array of IAAStarFieldNodes
+     * @param from start point
+     * @param to end point
+     * @param options algorithm settings (cacheResults:boolean, useWideSearch:boolean, iterationsPerFrame:integer)
+     */
     public calculatePathAsync(from:IAAStarFieldNode, to:IAAStarFieldNode,  options:IAsyncAlgorhitmOptions = null):Promise<IAAStarFieldNode[]> {
         let calculationOptions:IAlgorhitmOptions = options || this._defaultOptions;
         let cachedPatch:IAAStarFieldNode[] = this.getFromCache(from, to, calculationOptions);
