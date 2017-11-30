@@ -34,10 +34,11 @@ let simpleField:AAStarSimpleField = new AAStarSimpleField([
 #### Asynchronous method usage
 
 ```
-aStar.calculatePathAsync(simpleField.getCellAt(0,0), simpleField.getCellAt(3,0), {cacheResults:true, iterationsPerFrame:10})
+let options:IAlgorhitmOptions = {cacheResults:true, iterationsPerFrame:10, useWideSearch:true}
+aStar.calculatePathAsync(simpleField.getCellAt(0,0), simpleField.getCellAt(3,0), options)
         .then((r) => {
             r.forEach((v:SimpleNode) => {
                 console.log(i + "=" + v.x + "," + v.y);
             });
         })
-        ```
+```
