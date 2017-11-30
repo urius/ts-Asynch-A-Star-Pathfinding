@@ -1,4 +1,4 @@
-# Asynchronous A-Star pathfinding
+# Typescript asynchronous A-Star pathfinding
 Pathfinding algorithm with Synchronous/Asynchronous modes.
 Can be switched between A-Star and breadth-first search.
 
