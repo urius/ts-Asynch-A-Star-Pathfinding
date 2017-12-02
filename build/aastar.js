@@ -73,6 +73,9 @@
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * Main class
+ */
 class AAStar {
     constructor(gameField, defaultOptions = null) {
         this._cacheMap = new Map();
@@ -83,6 +86,12 @@ class AAStar {
             iterationsPerFrame: 10
         };
     }
+    /**
+     * Synchronous path calculation, returns Array of IAAStarFieldNodes
+     * @param from start point
+     * @param to end point
+     * @param options algorithm settings (cacheResults:boolean, useWideSearch:boolean)
+     */
     calculatePath(from, to, options = null) {
         let calculationOptions = options || this._defaultOptions;
         let cachedPatch = this.getFromCache(from, to, calculationOptions);
@@ -99,6 +108,12 @@ class AAStar {
             }
         }
     }
+    /**
+     * Asynchronous path calculation, returns promise whith Array of IAAStarFieldNodes
+     * @param from start point
+     * @param to end point
+     * @param options algorithm settings (cacheResults:boolean, useWideSearch:boolean, iterationsPerFrame:integer)
+     */
     calculatePathAsync(from, to, options = null) {
         let calculationOptions = options || this._defaultOptions;
         let cachedPatch = this.getFromCache(from, to, calculationOptions);
