@@ -12,7 +12,7 @@ Import classes and interfaces to your project:
 ``` import { IAAStarField, IAAStarFieldNode, AAStar, AAStarSimpleField, SimpleNode } from "aastar";```
 
 
-Create new ```AAStar``` instance and pass your ```game field``` instance as a parameter (you can use one of standard ```game fields``` located in **/fields** folder):
+Create new ```AAStar``` instance and pass your ```game field``` instance as a parameter (you can use one of standard game fields located in ```fields``` folder):
 
 ```let aastar:AAStar = new AAStar(gameField, defaultOptions);```
 
@@ -37,7 +37,7 @@ If you want to use your own type of game field, you need to implement 2 Interfac
 
 ## Examples
 
-### Synchronous method usage with a Simple Game field (```AAStarSimpleField``` Located in ```fields/``` folder)
+### Synchronous method usage with a Simple Game field
 
 ```
 import { IAAStarField, IAAStarFieldNode, AAStar, AAStarSimpleField, SimpleNode } from "aastar";
