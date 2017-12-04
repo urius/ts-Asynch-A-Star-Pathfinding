@@ -49,20 +49,25 @@ let simpleField:AAStarSimpleField = new AAStarSimpleField([
             [1,  1,  1, 1],
         ], false)
 
-        let astar:AAStar = new AAStar(simpleField);
-        astar.calculatePath(simpleField.getNodeAt(0,0), simpleField.getNodeAt(3,0))
-            .forEach ((v:SimpleNode, i) => {
-                console.log(i + "=" + v.x + "," + v.y);
-            });
+let startPoint:SimpleNode = simpleField.getNodeAt(0,0);
+let endPoint:SimpleNode = simpleField.getNodeAt(3,0);
+
+let astar:AAStar = new AAStar(simpleField);
+
+astar.calculatePath(startPoint, endPoint)
+    .forEach ((v:SimpleNode, i:number) => {
+        console.log(i + "=" + v.x + "," + v.y);
+    });
 ```
 
-### Asynchronous method usage
+### Asynchronous method usage (with options)
 
 ```
-let options:IAlgorhitmOptions = {cacheResults:true, iterationsPerFrame:10, useWideSearch:true}
-aStar.calculatePathAsync(simpleField.getCellAt(0,0), simpleField.getCellAt(3,0), options)
+let options:IAlgorhitmOptions = {cacheResults:true, iterationsPerFrame:10, useWideSearch:true};
+
+aStar.calculatePathAsync(startPoint, endPoint, options)
         .then((r) => {
-            r.forEach((v:SimpleNode) => {
+            r.forEach((v:SimpleNode, i:number) => {
                 console.log(i + "=" + v.x + "," + v.y);
             });
         })
