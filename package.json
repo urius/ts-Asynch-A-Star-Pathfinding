@@ -1,9 +1,9 @@
 {
   "name": "aastar",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Asynchronous A* (A-Star) pathfinding algorithm with swithcing to wide search mode",
-  "main": "build/aastar.js",
-  "typings":"build/ts/index",
+  "main": "dist/index.js",
+  "typings":"dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
