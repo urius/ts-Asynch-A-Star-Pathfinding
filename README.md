@@ -3,16 +3,15 @@ Pathfinding algorithm with Synchronous/Asynchronous modes.
 Can be switched between A-Star and breadth-first search.
 
 ## Install
-You can use npm to install this library
 
 ```npm install aastar --save```
 
-## Import to a project
-Import needed classes to your project:
+## How to use
+Import classes and interfaces to your project:
 
 ``` import { IAAStarField, IAAStarFieldNode, AAStar, AAStarSimpleField, SimpleNode } from "aastar";```
 
-## How to use
+
 Create new ```AAStar``` instance and pass your ```game field``` instance as a parameter (you can use one of standard ```game fields``` located in **/fields** folder):
 
 ```let aastar:AAStar = new AAStar(gameField, defaultOptions);```
@@ -23,6 +22,7 @@ If necessary, you can pass ```options``` to constructor. The options cintains pr
 * **useWideSearch** - if true, heuristic will be disabled, result will contain the shortest path, but calculation time will be increased
 
 Call ```aastar.calculatePath(startNode, endNode);``` or ```aastar.calculatePathAsynch(startNode, endNode);``` to calculate path in synchronous or asynchronous mode accordingly. In asynchronous mode you will get the ```Promise``` as a result.
+
 
 ## Create custom game field type
 If you want to use your own type of game field, you need to implement 2 Interfaces: 
@@ -35,9 +35,9 @@ If you want to use your own type of game field, you need to implement 2 Interfac
     * ```getMoveCost()``` - Game cell should be able to return it's own __move cost__ (if cell is not walkable, must return **-1**)
 
 
-### Usage example
+## Examples
 
-#### Synchronous method usage with a Simple Game field (```AAStarSimpleField``` Located in ```fields/``` folder)
+### Synchronous method usage with a Simple Game field (```AAStarSimpleField``` Located in ```fields/``` folder)
 
 ```
 import { IAAStarField, IAAStarFieldNode, AAStar, AAStarSimpleField, SimpleNode } from "aastar";
@@ -56,7 +56,7 @@ let simpleField:AAStarSimpleField = new AAStarSimpleField([
             });
 ```
 
-#### Asynchronous method usage
+### Asynchronous method usage
 
 ```
 let options:IAlgorhitmOptions = {cacheResults:true, iterationsPerFrame:10, useWideSearch:true}
