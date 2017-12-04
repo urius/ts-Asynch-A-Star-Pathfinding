@@ -3,17 +3,19 @@ Pathfinding algorithm with Synchronous/Asynchronous modes.
 Can be switched between A-Star and breadth-first search.
 
 ## Install
-You can use np to install this library
+You can use npm to install this library
+
 ```npm install aastar --save```
 
 ## Import to a project
 Import needed classes to your project:
+
 ``` import { IAAStarField, IAAStarFieldNode, AAStar, AAStarSimpleField, SimpleNode } from "aastar";```
 
 ## How to use
-Create new ```AAStar``` instance and pass your ```game field``` instance as a parameter (you can use one of standard ```game fields``` located in **fields/** folder):
+Create new ```AAStar``` instance and pass your ```game field``` instance as a parameter (you can use one of standard ```game fields``` located in **/fields** folder):
 
-```let aastar:AAStar = new AAStar(gameField, defaultOption);```
+```let aastar:AAStar = new AAStar(gameField, defaultOptions);```
 
 If necessary, you can pass ```options``` to constructor. The options cintains properties:
 * **iterationsPerFrame** - how many calculation steps will be maked during the frame (recommended values: 10 - 100). Default: ```10```
