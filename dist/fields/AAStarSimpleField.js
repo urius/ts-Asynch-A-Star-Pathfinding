@@ -1,42 +1,35 @@
-import { IAAStarField, IAAStarFieldNode } from "../AAStar";
-
-export class AAStarSimpleField implements IAAStarField {
-    private _map:SimpleNode[][];
-    private _useDiagonals:boolean;
-
-    constructor(map:number[][], useDiagonals:boolean = true) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+class AAStarSimpleField {
+    constructor(map, useDiagonals = true) {
         this._map = this.convertMap(map);
         this._useDiagonals = useDiagonals;
     }
-
-    private convertMap(map:number[][]):SimpleNode[][] {
-        let result:SimpleNode[][] = [];
-        for(let y:number = 0; y < map.length; y++) {
+    convertMap(map) {
+        let result = [];
+        for (let y = 0; y < map.length; y++) {
             result[y] = [];
-            for(let x:number = 0; x < map[y].length; x ++) {
+            for (let x = 0; x < map[y].length; x++) {
                 result[y][x] = new SimpleNode(x, y, map[y][x]);
             }
-        }  
+        }
         return result;
-        
     }
-
-    public getNodeAt(x:number, y:number):SimpleNode {
-        if(this._map[y]) {
+    getNodeAt(x, y) {
+        if (this._map[y]) {
             return this._map[y][x];
         }
         return null;
     }
-    
-    public getNearNodes(node:SimpleNode):IAAStarFieldNode[] {
-        let result:SimpleNode[] = [];
+    getNearNodes(node) {
+        let result = [];
         //debugger;
         if (node) {
             this.addIfWalkable(this.getNodeAt(node.x - 1, node.y), result);
             this.addIfWalkable(this.getNodeAt(node.x + 1, node.y), result);
             this.addIfWalkable(this.getNodeAt(node.x, node.y - 1), result);
             this.addIfWalkable(this.getNodeAt(node.x, node.y + 1), result);
-            if(this._useDiagonals == true) {
+            if (this._useDiagonals == true) {
                 this.addIfWalkable(this.getNodeAt(node.x - 1, node.y - 1), result);
                 this.addIfWalkable(this.getNodeAt(node.x - 1, node.y + 1), result);
                 this.addIfWalkable(this.getNodeAt(node.x + 1, node.y - 1), result);
@@ -45,38 +38,31 @@ export class AAStarSimpleField implements IAAStarField {
         }
         return result;
     }
-
-    private addIfWalkable(node:SimpleNode, array:SimpleNode[]):void {
+    addIfWalkable(node, array) {
         if (node && node.getMoveCost() >= 0) {
             array.push(node);
         }
     }
-
-    public heuristicDistance(a: SimpleNode, b: SimpleNode): number {
+    heuristicDistance(a, b) {
         return Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2));
     }
 }
-
-export class SimpleNode implements IAAStarFieldNode{
-    private _moveCost:number;
-    private _x:number;
-    private _y:number;
-
-    constructor(x:number, y:number, moveCost:number) {
+exports.AAStarSimpleField = AAStarSimpleField;
+class SimpleNode {
+    constructor(x, y, moveCost) {
         this._moveCost = moveCost;
         this._x = x;
         this._y = y;
     }
-
-    public getMoveCost():number {
+    getMoveCost() {
         return this._moveCost;
     }
-
-    public get x():number {
+    get x() {
         return this._x;
     }
-
-    public get y():number {
+    get y() {
         return this._y;
     }
 }
+exports.SimpleNode = SimpleNode;
+//# sourceMappingURL=AAStarSimpleField.js.map

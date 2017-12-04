@@ -2,11 +2,11 @@
   "name": "aastar",
   "version": "1.0.1",
   "description": "Asynchronous A* (A-Star) pathfinding algorithm with swithcing to wide search mode",
-  "main": "src/AAStar.ts",
+  "main": "build/aastar.js",
+  "typings":"build/ts/index",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "typings":"src/AAStar.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/urius/ts-Asynch-A-Star-Pathfinding.git"
